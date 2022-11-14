@@ -1,12 +1,29 @@
 import "./App.css";
+import React, { useState, useEffect } from "react";
+
+import MyForm from "./MyForm";
+import MyHeader from "./MyHeader";
+import BodyNotes from "./BodyNotes";
 
 function App() {
+	const [user, setUser] = useState(1);
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		fetch("https://jsonplaceholder.typicode.com/posts")
+			.then((res) => res.json())
+			.then((dataFetch) => {
+				setData(dataFetch);
+			});
+	}, []);
+
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h1>hola adios</h1>
-				<h1>hola adios</h1>
-			</header>
+		<div style={{ width: "100%" }}>
+			<div style={{ display: "flex", width: "100%" }}>
+				<MyForm data={data} setData={setData} />
+				<MyHeader userNote={user} setUser={setUser} />
+			</div>
+			<BodyNotes data={data} user={user} />
 		</div>
 	);
 }
