@@ -20,7 +20,7 @@ export default function MyHeader({ userNote, setUser }) {
 			<h1>User: {userNote}</h1>
 			<button
 				onClick={() => {
-					userNote < 11 ? setUser(userNote + 1) : ""; //Forma Recomendable
+					userNote < 11 ? setUser(userNote + 1) : <></>; //Forma Recomendable
 				}}
 			>
 				+

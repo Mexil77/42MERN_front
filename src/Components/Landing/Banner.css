@@ -1,0 +1,46 @@
+.Banner {
+	background-image: url("https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bm90ZXN8ZW58MHx8MHx8&w=1000&q=80");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: calc(100vh - 50px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Banner_Box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #4cc9f0;
+	width: 20rem;
+	height: 30%;
+	border-radius: 30px;
+	padding: 30px;
+	animation-name: shadowMove;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes shadowMove {
+	0% {
+		box-shadow: 10px 10px 10px 1px #f72585;
+	}
+	25% {
+		box-shadow: -10px 10px 10px 1px #f72585;
+	}
+	50% {
+		box-shadow: -10px -10px 10px 1px #f72585;
+	}
+	75% {
+		box-shadow: 10px -10px 10px 1px #f72585;
+	}
+	100% {
+		box-shadow: 10px 10px 10px 1px #f72585;
+	}
+}
+
+.Banner_Box > h1 {
+	margin: 0;
+}

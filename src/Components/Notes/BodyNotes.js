@@ -1,6 +1,8 @@
 import React from "react";
 
-import Card from "./Card";
+import Card from "../Common/Card";
+
+import { Link } from "react-router-dom";
 
 export default function BodyNotes({ data, user }) {
 	return (
@@ -16,13 +18,13 @@ export default function BodyNotes({ data, user }) {
 				.filter((d) => d.userId === user)
 				.map((d) => {
 					return (
-						<Card
+						<Link
 							key={d.id}
-							id={d.id}
-							userId={d.userId}
-							title={d.title}
-							body={d.body}
-						/>
+							to={`/notes/${d.id}`}
+							style={{ textDecoration: "none", color: "#000" }}
+						>
+							<Card id={d.id} userId={d.userId} title={d.title} body={d.body} />
+						</Link>
 					);
 				})}
 		</div>

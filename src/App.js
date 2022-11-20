@@ -1,30 +1,44 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import MyForm from "./MyForm";
-import MyHeader from "./MyHeader";
-import BodyNotes from "./BodyNotes";
+import Root from "./Components/Root/Root";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Notes, { notesLoading } from "./Components/Notes/Notes";
+import Banner from "./Components/Landing/Banner";
+import DisplayNote, { noteLoader } from "./Components/Notes/DisplayNote";
 
 function App() {
-	const [user, setUser] = useState(1);
-	const [data, setData] = useState([]);
-
-	useEffect(() => {
-		fetch("https://jsonplaceholder.typicode.com/posts")
-			.then((res) => res.json())
-			.then((dataFetch) => {
-				setData(dataFetch);
-			});
-	}, []);
+	const router = createBrowserRouter([
+		{
+			path: "/",
+			element: <Root />,
+			children: [
+				{
+					path: "",
+					element: <Banner />,
+				},
+				{
+					path: "notes",
+					element: <Notes />,
+					loader: notesLoading,
+					children: [
+						{
+							path: ":idNote",
+							element: <DisplayNote />,
+							loader: noteLoader,
+						},
+					],
+				},
+			],
+		},
+	]);
 
 	return (
-		<div style={{ width: "100%" }}>
-			<div style={{ display: "flex", width: "100%" }}>
-				<MyForm data={data} setData={setData} />
-				<MyHeader userNote={user} setUser={setUser} />
-			</div>
-			<BodyNotes data={data} user={user} />
-		</div>
+		<>
+			<RouterProvider router={router} />
+		</>
 	);
 }
 
