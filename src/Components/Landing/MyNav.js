@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./MyNav.css";
+import "./MyNav.scss";
 
 export default function MyNav() {
 	return (
@@ -9,7 +9,7 @@ export default function MyNav() {
 			<Link to={"/"} id={"logoNav"}>
 				<p>App Notes</p>
 			</Link>
-			<button className="btn">Login</button>
+			<button className="btn navbar_loginbutton">Login</button>
 		</nav>
 	);
 }

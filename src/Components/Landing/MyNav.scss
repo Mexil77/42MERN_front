@@ -1,6 +1,8 @@
+@import "Styles/Colors.scss";
+
 .navbar {
 	height: 50px;
-	background-color: #7209b7;
+	background-color: $color-purple;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -15,7 +17,7 @@
 	margin-left: 30px;
 	font-size: large;
 	font-weight: bold;
-	color: #4cc9f0;
+	color: $color-gray;
 	cursor: pointer;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -25,10 +27,29 @@
 }
 
 #logoNav:hover {
-	background-color: #f72585;
+	color: $color-purple;
+	background-color: $color-gray;
 }
 
 .navbar > button {
 	height: 50px;
 	margin-right: 30px;
+}
+
+.navbar_loginbutton {
+	font-size: large;
+	font-weight: bold;
+	color: $color-gray;
+	background-color: $color-purple;
+	cursor: pointer;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 100%;
+	border-radius: 5px;
+	transition: background-color 0.5s;
+}
+
+.navbar_loginbutton:hover {
+	color: $color-purple;
+	background-color: $color-gray;
 }

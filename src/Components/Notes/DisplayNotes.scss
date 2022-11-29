@@ -1,0 +1,15 @@
+@import "Styles/Colors.scss";
+
+.DisplayNote_butons {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+.DisplayNote_butons_delete {
+	color: $color-gray;
+}
+
+.DisplayNote_butons_edit {
+	text-align: center;
+	color: $color-gray;
+}

@@ -1,9 +1,10 @@
 .noteCard {
-	background-color: #af9910;
-	width: 20rem;
+	background-color: #feff9c;
+	width: 15rem;
 	display: flex;
 	flex-direction: column;
 	border-radius: 30px;
 	padding: 20px;
 	margin: 20px;
+	border: 1px solid #000;
 }

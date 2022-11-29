@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 
 import Root from "./Components/Root/Root";
+import "./Styles/Buttons.scss";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 

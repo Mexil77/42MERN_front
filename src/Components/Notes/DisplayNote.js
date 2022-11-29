@@ -4,6 +4,10 @@ import axios from "axios";
 
 import Card from "../Common/Card";
 
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+
+import "./DisplayNotes.scss";
+
 import { Link, useLoaderData, redirect, Form } from "react-router-dom";
 
 export async function noteLoader({ params }) {
@@ -27,10 +31,22 @@ export default function DisplayNote() {
 				title={note.title}
 				body={note.body}
 			/>
-			<Link to={`/notes/${note._id}/edit`}>Editar</Link>
-			<Form method="post">
-				<button type="submit">Borrar</button>
-			</Form>
+			<div className="DisplayNote_butons">
+				<Link
+					to={`/notes/${note._id}/edit`}
+					className="btn btn-link btn-primary DisplayNote_butons_edit"
+				>
+					<AiFillEdit />
+				</Link>
+				<Form method="post">
+					<button
+						type="submit"
+						className="btn btn-danger DisplayNote_butons_delete"
+					>
+						<AiFillDelete />
+					</button>
+				</Form>
+			</div>
 		</div>
 	);
 }

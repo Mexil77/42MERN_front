@@ -1,0 +1,8 @@
+@import "Styles/Colors.scss";
+
+.BodyNotes {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	overflow-y: scroll;
+}

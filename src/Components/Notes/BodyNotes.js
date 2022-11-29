@@ -2,22 +2,17 @@ import React from "react";
 
 import Card from "../Common/Card";
 
+import "./BodyNotes.scss";
+
 import { Link } from "react-router-dom";
 
-export default function BodyNotes({ data, user }) {
+export default function BodyNotes({ data }) {
 	return (
-		<div
-			style={{
-				backgroundColor: "#30af99",
-				display: "flex",
-				flexWrap: "wrap",
-				justifyContent: "center",
-			}}
-		>
+		<div className="BodyNotes">
 			{data.map((d) => {
 				return (
 					<Link
-						key={d.id}
+						key={d._id}
 						to={`/notes/${d._id}`}
 						style={{ textDecoration: "none", color: "#000" }}
 					>

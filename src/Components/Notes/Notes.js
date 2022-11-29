@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import { useLoaderData, Outlet, Link } from "react-router-dom";
 
+import { AiFillFileAdd } from "react-icons/ai";
+
 import axios from "axios";
 
-import MyForm from "./MyForm";
-import MyHeader from "./MyHeader";
+import "./Notes.scss";
+
 import BodyNotes from "./BodyNotes";
 
 export async function notesLoading() {
@@ -24,15 +26,19 @@ export default function Notes() {
 	const notes = useLoaderData();
 
 	useEffect(() => {
-		console.log(notes);
 		setData(notes);
 	}, [notes]);
 	return (
-		<div style={{ width: "100%" }}>
-			<div style={{ display: "flex", width: "100%" }}>
-				<Link to="/notes/newNote">Add Note</Link>
+		<div className="Notes">
+			<div className="Notes_header">
+				<Link
+					to="/notes/newNote"
+					className="btn btn-primary btn-link Notes_header_link"
+				>
+					<AiFillFileAdd />
+				</Link>
 			</div>
-			<div style={{ display: "flex" }}>
+			<div className="Notes_body">
 				<BodyNotes data={data} user={user} />
 				<Outlet />
 			</div>
