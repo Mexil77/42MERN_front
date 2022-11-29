@@ -7,7 +7,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Notes, { notesLoading } from "./Components/Notes/Notes";
 import Banner from "./Components/Landing/Banner";
-import DisplayNote, { noteLoader } from "./Components/Notes/DisplayNote";
+import DisplayNote, {
+	noteLoader,
+	noteDeleteAction,
+} from "./Components/Notes/DisplayNote";
+import MyForm, {
+	formCreateNote,
+	formEditNote,
+} from "./Components/Notes/MyForm";
 
 function App() {
 	const router = createBrowserRouter([
@@ -25,9 +32,20 @@ function App() {
 					loader: notesLoading,
 					children: [
 						{
+							path: "newNote",
+							element: <MyForm />,
+							action: formCreateNote,
+						},
+						{
 							path: ":idNote",
 							element: <DisplayNote />,
 							loader: noteLoader,
+							action: noteDeleteAction,
+						},
+						{
+							path: ":idNote/edit",
+							element: <MyForm />,
+							action: formEditNote,
 						},
 					],
 				},

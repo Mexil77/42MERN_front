@@ -1,9 +1,26 @@
 import React from "react";
+import { Form, redirect } from "react-router-dom";
+import axios from "axios";
 
-export default function MyForm({ data, setData }) {
-	const [title, setTitle] = React.useState("");
-	const [body, setBody] = React.useState("");
+export async function formCreateNote({ request }) {
+	let formData = await request.formData();
+	await axios.post(process.env.REACT_APP_URL, {
+		userId: "emgarcia",
+		title: formData.get("title"),
+		body: formData.get("body"),
+	});
+	return redirect("/notes");
+}
 
+export async function formEditNote({ request, params }) {
+	let formData = await request.formData();
+	await axios.put(`${process.env.REACT_APP_URL}${params.idNote}`, {
+		title: formData.get("title"),
+		body: formData.get("body"),
+	});
+}
+
+export default function MyForm() {
 	return (
 		<div
 			style={{
@@ -15,43 +32,14 @@ export default function MyForm({ data, setData }) {
 			}}
 		>
 			<h3 style={{ margin: 0 }}>Ingresa una Nota</h3>
-			<form
-				action=""
+			<Form
+				method="post"
 				style={{ display: "flex", flexDirection: "column", width: "50%" }}
 			>
-				<input
-					type="text"
-					placeholder="Titulo"
-					value={title}
-					onChange={(e) => {
-						setTitle(e.target.value);
-					}}
-				/>
-				<input
-					type="text"
-					placeholder="Descripcion"
-					value={body}
-					onChange={(e) => setBody(e.target.value)}
-				/>
-				<button
-					onClick={(e) => {
-						e.preventDefault();
-						setData([
-							...data,
-							{
-								userId: 11,
-								id: data.length + 1,
-								title,
-								body,
-							},
-						]);
-						setTitle("");
-						setBody("");
-					}}
-				>
-					Add
-				</button>
-			</form>
+				<input type="text" placeholder="Titulo" name="title" />
+				<input type="text" name="body" placeholder="Descripcion" />
+				<button type="submit">Add</button>
+			</Form>
 		</div>
 	);
 }

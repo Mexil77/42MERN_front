@@ -14,19 +14,17 @@ export default function BodyNotes({ data, user }) {
 				justifyContent: "center",
 			}}
 		>
-			{data
-				.filter((d) => d.userId === user)
-				.map((d) => {
-					return (
-						<Link
-							key={d.id}
-							to={`/notes/${d.id}`}
-							style={{ textDecoration: "none", color: "#000" }}
-						>
-							<Card id={d.id} userId={d.userId} title={d.title} body={d.body} />
-						</Link>
-					);
-				})}
+			{data.map((d) => {
+				return (
+					<Link
+						key={d.id}
+						to={`/notes/${d._id}`}
+						style={{ textDecoration: "none", color: "#000" }}
+					>
+						<Card id={d._id} userId={d.userId} title={d.title} body={d.body} />
+					</Link>
+				);
+			})}
 		</div>
 	);
 }
